@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,12 @@ import android.view.ViewGroup;
 public class BlankFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    //参数Key
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
+    //存放传递进来的参数
     private String mParam1;
     private String mParam2;
 
@@ -42,6 +45,7 @@ public class BlankFragment extends Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
+    //工厂方法
     public static BlankFragment newInstance(String param1, String param2) {
         BlankFragment fragment = new BlankFragment();
         Bundle args = new Bundle();
@@ -57,12 +61,14 @@ public class BlankFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            Log.i("Fragment:","onCreate:参数1:"+mParam1+"参数2："+mParam2);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.i("Fragment：","onCreateView");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blank, container, false);
     }
@@ -76,6 +82,7 @@ public class BlankFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
+        Log.i("Fragment:","onAttach");
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
@@ -88,7 +95,49 @@ public class BlankFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        Log.i("Fragment:","onDetach");
         mListener = null;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        Log.i("Fragment","onActivityCreated");
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        Log.i("Fragment:","onResume");
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        Log.i("Fragment:","onPause");
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        Log.i("Fragment:","onStop");
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        Log.i("Fragment:","onDestroyView");
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.i("Fragment:","onDestroy");
+        super.onDestroy();
     }
 
     /**
